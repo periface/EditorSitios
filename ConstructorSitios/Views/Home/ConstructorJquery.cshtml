@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "ConstructorJquery";
+}
+<style type="text/css">
+    /* show the move cursor as the user moves the mouse over the panel header.*/
+    #draggablePanelList .panel-heading {
+        cursor: move;
+    }
+    #draggablePanelList2 .panel-heading {
+        cursor: move;
+    }
+</style>
+<div class="row">
+    <div class="col-lg-12">
+        <ul id="draggablePanelList" class="list-unstyled conectado">
+            <div class="panel panel-info col-md-6">
+                <div class="handle panel-heading">1</div>
+                <div class="panel-body">Content ...</div>
+            </div>
+            <div class="panel panel-info col-md-6">
+                <div class="handle panel-heading">2</div>
+                <div class="panel-body">Content ...</div>
+            </div>
+            <div class="panel panel-info col-md-6">
+                <div class="handle panel-heading">3</div>
+                <div class="panel-body">Content ...</div>
+            </div>
+            <div class="panel panel-info col-md-6">
+                <div class="handle panel-heading">4</div>
+                <div class="panel-body">Content ...</div>
+            </div>
+        </ul>
+    </div>
+</div>
+<!-- Bootstrap 3 panel list. -->
+
+@section Scripts{
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script>
+        jQuery(function ($) {
+            var panelList = $('#draggablePanelList');
+            var panelListElm = $('#draggablePanelList2');
+            panelList.sortable({
+                // Only make the .panel-heading child elements support dragging.
+                // Omit this to make then entire <li>...</li> draggable.
+                handle: '.handle',
+                update: function () {
+                    $('.panel', panelList).each(function (index, elem) {
+                        var $listItem = $(elem),
+                            newIndex = $listItem.index();
+
+                        // Persist the new indices.
+                    });
+                },
+                connectWith: '.conectado'
+            });
+            panelListElm.sortable({
+                // Only make the .panel-heading child elements support dragging.
+                // Omit this to make then entire <li>...</li> draggable.
+                handle: '.handle',
+                update: function () {
+                    $('.panel', panelList).each(function (index, elem) {
+                        var $listItem = $(elem),
+                            newIndex = $listItem.index();
+
+                        // Persist the new indices.
+                    });
+                },
+                connectWith: '.conectado'
+            });
+        });
+    </script>
+}
